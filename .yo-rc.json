@@ -1,0 +1,18 @@
+{
+  "generator-ui5-ts-app": {
+    "namespace": "com.bentil.playground",
+    "framework": "SAPUI5",
+    "frameworkVersion": "1.120.4",
+    "author": "Bentil Okyere Boadu",
+    "initrepo": true,
+    "tstypes": "@sapui5/types",
+    "tstypesVersion": "1.120.4",
+    "appId": "com.bentil.playground",
+    "appURI": "com/bentil/playground",
+    "cdnDomain": "ui5.sap.com",
+    "defaultTheme": "sap_horizon",
+    "gte1_98_0": true,
+    "gte1_104_0": true,
+    "gte1_115_0": true
+  }
+}
