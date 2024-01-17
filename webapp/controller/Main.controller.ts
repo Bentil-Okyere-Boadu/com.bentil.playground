@@ -4,20 +4,16 @@ import { UserService } from "../model/UserService";
 import { User } from "../types";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import { ListItemBase$PressEvent } from "sap/m/ListItemBase";
+import { Button$PressEvent } from "sap/m/Button";
 
 /**
  * @namespace com.bentil.playground.controller
  */
 export default class Main extends BaseController {
-	private oLocalModel = 'DataRepo'
 	public async onInit() {
 		const aUsers: User[] = await this.getUsers();
-		const oModel = new JSONModel({
-			users: aUsers
-		});
-
-		this.setModel(oModel, this.oLocalModel)
-		
+		const oAppModel = (this.getModel('app')) as JSONModel;
+		oAppModel.setProperty('/users', aUsers);		
 	}
 	public sayHello(): void {
 		MessageBox.show("Hello World!");
@@ -29,7 +25,21 @@ export default class Main extends BaseController {
 	}
 
 	public onColumnListItemPress = (oEvent: ListItemBase$PressEvent) => {
-		const sPath = (oEvent.getSource().getBindingContextPath(this.oLocalModel)) as string
-		console.log(sPath)
+		const id = (oEvent.getSource().getBindingContext('app').getProperty('id')) as string;
+		this.navTo('details', { id: id });
+	}
+
+	public onDeleteBtnPress = (oEvent: Button$PressEvent) => {
+		const id = (oEvent.getSource().getBindingContext('app').getProperty('id')) as string;
+		MessageBox.confirm('Are you sure you want to delete user?', {
+			actions: ["YES", "NO"],
+			emphasizedAction: "YES",
+			onClose: async (sAction: string) => {
+				if(sAction === "YES"){
+					await UserService().deleteUser(id);
+					this.getModel('app').refresh(true);
+				}
+			}
+		})
 	}
 }

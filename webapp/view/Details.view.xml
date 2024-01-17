@@ -1,0 +1,13 @@
+<mvc:View
+	controllerName="com.bentil.playground.controller.Details"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'com/bentil/playground/model/formatter'
+	}">
+    <Page>
+        <Text text='this is details page'/>
+    </Page>
+    </mvc:View>

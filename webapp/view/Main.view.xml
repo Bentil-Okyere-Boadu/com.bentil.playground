@@ -12,20 +12,7 @@
 		title="{i18n>appTitle}"
 		>
 		<content>
-			<!-- <IllustratedMessage
-				title="{i18n>appTitle}"
-				illustrationType="sapIllus-SuccessHighFive"
-				enableVerticalResponsiveness="true"
-				description="{i18n>appDescription}">
-				<additionalContent>
-					<Button
-						id="helloButton"
-						text="{formatter: 'formatter.formatValue', path: 'i18n>btnText'}"
-						press="sayHello" />
-				</additionalContent>
-			</IllustratedMessage>
-	 -->		
-	 <Table items="{DataRepo>/users}">
+	 <Table items="{app>/users}" class=''>
 		 <columns>
 			 <Column>
 			 	<Text text="Name"/>
@@ -39,13 +26,16 @@
 			 <Column>
 			 	<Text text="Status"/>
 			 </Column>
+			 <Column>
+			 </Column>
 		 </columns>
 		 <ColumnListItem type="Navigation" press=".onColumnListItemPress">
 			 <cells>
-				 <Text text="{DataRepo>name}"/>
-				 <Text text="{DataRepo>email}"/>
-				 <Text text="{DataRepo>gender}"/>
-				 <Text text="{DataRepo>status}"/>
+				 <Text text="{app>name}"/>
+				 <Text text="{app>email}"/>
+				 <Text text="{app>gender}"/>
+				 <Text text="{app>status}"/>
+			 	<Button text='Delete' press='onDeleteBtnPress' icon='sap-icon://delete'/>
 			 </cells>
 		 </ColumnListItem>
 	 </Table>

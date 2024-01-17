@@ -15,6 +15,15 @@ export const UserService = ()  => {
             }
         },
         readSingleUser: () => {},
-        deleteUser: () => {},
+        deleteUser: async (sId: string) => {
+            const response: Response = await fetchAPI(`users/${sId}`, FetchMethods.DELETE);
+            if(response.ok) {
+                const aUsers = (await response.json()) as User[];
+                console.log(aUsers)
+                return aUsers;
+            } else {
+                MessageBox.error('An error occured')
+            }
+        },
     }
 }
