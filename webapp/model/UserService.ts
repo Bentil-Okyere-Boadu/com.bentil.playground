@@ -23,17 +23,24 @@ export const UserService = ()  => {
                 }
             } catch (error) {
                 MessageBox.error(error as string)
-            }
-             
-            
+            } 
         },
-        readSingleUser: () => {},
+        readSingleUser: async (sId: string) : Promise<User> => {
+            try {
+                const response: Response = await fetchAPI(`user/${sId}`, FetchMethods.GET);
+                if(response.ok) {
+                    const aUsers = (await response.json()) as User;
+                    return aUsers;
+                }
+            } catch (error) {
+                MessageBox.error(error as string)
+            }
+        },
         deleteUser: async (sId: string) => {
             try {
                 const response: Response = await fetchAPI(`user/${sId}`, FetchMethods.DELETE);
             if(response.ok) {
-                const aUsers = (await response.json()) as User[];
-                console.log(aUsers)
+                const aUsers = (await response.json()) as User;
                 return aUsers;
             }
             } catch (error) {
