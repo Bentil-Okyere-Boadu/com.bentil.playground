@@ -13,3 +13,5 @@ export interface User {
     hometown: string,
     password?: string,
 } 
+
+export interface LoginRes {_id: string, user: User, token: string}

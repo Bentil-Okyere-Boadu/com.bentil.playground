@@ -76,7 +76,7 @@
 			},
 			"routes": [
 				{
-					"pattern": "",
+					"pattern": "users",
 					"name": "main",
 					"target": "main"
 				},

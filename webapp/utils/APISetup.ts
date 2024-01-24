@@ -1,13 +1,14 @@
-import { config } from "./config";
+import config from "./config";
 
-export const fetchAPI = (sEndpoint: string, sMethod: string, oBody?: BodyInit) : Promise<Response> => {
-    return fetch(`https://hosanna-methodist-api.vercel.app/api/${sEndpoint}`, {
+export const fetchAPI = (sEndpoint: string, sMethod: string, oBody?: {}) : Promise<Response> => {
+    const Config = new config();
+    return fetch(`${Config.getBaseUrl()}${sEndpoint}`, {
         method: sMethod,
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            authorization: `Bearer ${config()._accessToken}`
+            authorization: `Bearer ${Config.getAccessToken()}`
         },
-        body: oBody
+        body: JSON.stringify(oBody)
     })
 }
