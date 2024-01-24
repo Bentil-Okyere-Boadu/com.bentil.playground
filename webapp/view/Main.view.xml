@@ -21,20 +21,24 @@
 			 	<Text text="Email"/>
 			 </Column>
 			 <Column>
-			 	<Text text="Gender"/>
+			 	<Text text="Phone Number"/>
 			 </Column>
 			 <Column>
-			 	<Text text="Status"/>
+			 	<Text text="Residence"/>
+			 </Column>
+			 <Column>
+			 	<Text text="Occupation"/>
 			 </Column>
 			 <Column>
 			 </Column>
 		 </columns>
 		 <ColumnListItem type="Navigation" press=".onColumnListItemPress">
 			 <cells>
-				 <Text text="{app>name}"/>
+				 <Text text="{app>firstName} {app>lastName}"/>
 				 <Text text="{app>email}"/>
-				 <Text text="{app>gender}"/>
-				 <Text text="{app>status}"/>
+				 <Text text="{app>phoneNumber}"/>
+				 <Text text="{app>residence}"/>
+				 <Text text="{app>occupation}"/>
 			 	<Button text='Delete' press='onDeleteBtnPress' icon='sap-icon://delete'/>
 			 </cells>
 		 </ColumnListItem>

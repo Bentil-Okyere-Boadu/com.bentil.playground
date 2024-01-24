@@ -1,6 +1,6 @@
 export const config = () => {
     return {
-        _baseURL: "https://gorest.co.in/public/v2",
-        _accessToken: "bb362b59ff5cfbb7492ef1f53fd4443d16822ff36f7c4ddaf21e17ccafc4285b"
+        _baseURL: "https://hosanna-methodist-api.vercel.app/api",
+        _accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWE3MjIwYTEwNGQ3OWJkNzk4YTQ1MCIsImlhdCI6MTcwNTY2OTI5OSwiZXhwIjoxNzA2MTAxMjk5fQ.R8KMn9IWQgkrN4OqEonVuf8G5MjyKS5xI2SGIiKKfV4"
     }
 }

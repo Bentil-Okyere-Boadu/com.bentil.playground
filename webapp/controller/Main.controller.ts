@@ -25,12 +25,12 @@ export default class Main extends BaseController {
 	}
 
 	public onColumnListItemPress = (oEvent: ListItemBase$PressEvent) => {
-		const id = (oEvent.getSource().getBindingContext('app').getProperty('id')) as string;
+		const id = (oEvent.getSource().getBindingContext('app').getProperty('_id')) as string;
 		this.navTo('details', { id: id });
 	}
 
 	public onDeleteBtnPress = (oEvent: Button$PressEvent) => {
-		const id = (oEvent.getSource().getBindingContext('app').getProperty('id')) as string;
+		const id = (oEvent.getSource().getBindingContext('app').getProperty('_id')) as string;
 		MessageBox.confirm('Are you sure you want to delete user?', {
 			actions: ["YES", "NO"],
 			emphasizedAction: "YES",

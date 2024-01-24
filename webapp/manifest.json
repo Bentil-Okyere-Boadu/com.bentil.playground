@@ -9,6 +9,12 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
+		},
+		"dataSources": {
+			"userService":{
+				"uri": "user/",
+				"type": "JSON"
+			}
 		}
 	},
 
@@ -46,6 +52,11 @@
 		},
 
 		"models": {
+			"userServiceModel":{
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "userService",
+				"preload": true
+			},
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {

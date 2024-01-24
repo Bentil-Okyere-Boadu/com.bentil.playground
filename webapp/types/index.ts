@@ -1,7 +1,15 @@
 export interface User {
-    id?: number,
-    name: string,
+    _id?: number,
+    firstName: string,
+    lastName: string,
     email: string,
-    gender: string,
-    status: string
+    phoneNumber: string,
+    whatsappNumber: string,
+    occupation: string,
+    organization: string,
+    dateOfBirth: string,
+    residence: string,
+    picture: string,
+    hometown: string,
+    password?: string,
 } 
