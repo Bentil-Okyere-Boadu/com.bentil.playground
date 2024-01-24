@@ -1,10 +1,19 @@
 import MessageBox from "sap/m/MessageBox";
 import { fetchAPI } from "../utils/APISetup"
-import { User } from "../types";
+import { LoginRes, User } from "../types";
 import { FetchMethods } from "../utils/enums";
 
 export const UserService = ()  => {
     return {
+        userLogin: async (loginDetails : { email: string, password: string }) : Promise<Number | LoginRes> => {
+            const response: Response = await fetchAPI('user/login', FetchMethods.POST, loginDetails);
+            if(response.ok) {
+                const user = (await response.json()) as LoginRes;
+                return user;
+            } else{
+                return response.status
+            }
+        },
         readUsers: async (): Promise<User[]> => {
             try {
                 const response: Response = await fetchAPI('user', FetchMethods.GET);

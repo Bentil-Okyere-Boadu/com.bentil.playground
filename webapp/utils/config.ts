@@ -1,6 +1,24 @@
-export const config = () => {
-    return {
-        _baseURL: "https://hosanna-methodist-api.vercel.app/api",
-        _accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWE3MjIwYTEwNGQ3OWJkNzk4YTQ1MCIsImlhdCI6MTcwNTY2OTI5OSwiZXhwIjoxNzA2MTAxMjk5fQ.R8KMn9IWQgkrN4OqEonVuf8G5MjyKS5xI2SGIiKKfV4"
-    }
+/**
+ * @namespace com.bentil.playground.utils
+ */
+export default class config {
+    private baseURL: string;
+    private accessToken: string;
+        constructor() {
+            this.baseURL = "https://hosanna-methodist-api.vercel.app/api/";
+            this.accessToken = JSON.parse(localStorage.getItem('HAT'));
+        }
+
+        public getBaseUrl () : string {
+            return this.baseURL;
+        }
+        public getAccessToken () : string {
+            return this.accessToken;
+        }
+
+        public setAccessToken (sToken: string) {
+            localStorage.setItem('HAT', JSON.stringify(sToken));
+            this.accessToken = sToken
+        }
+    
 }

@@ -11,12 +11,17 @@ import { Button$PressEvent } from "sap/m/Button";
  */
 export default class Main extends BaseController {
 	public async onInit() {
-		const aUsers: User[] = await this.getUsers();
-		const oAppModel = (this.getModel('app')) as JSONModel;
-		oAppModel.setProperty('/users', aUsers);		
+
+		this.getRouter().getRoute("main").attachPatternMatched(this.onRouteMatched, this)
 	}
-	public sayHello(): void {
-		MessageBox.show("Hello World!");
+	
+	public async onRouteMatched() {
+		const oAppModel = (this.getModel('app')) as JSONModel;
+		const sToken = oAppModel.getProperty('/token');
+		if(sToken) {
+			const aUsers: User[] = await this.getUsers();
+			oAppModel.setProperty('/users', aUsers);		
+		}
 	}
 
 	private getUsers = async () : Promise<User[]> => {
