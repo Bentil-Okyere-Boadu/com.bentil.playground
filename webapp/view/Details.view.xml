@@ -18,12 +18,12 @@
 				layout="ColumnLayout"
 			>
 				<f:content>
-					<Label text="First Name" />
-					<Input value="{app>/user/firstName}" editable="{app>/editable}"/>
-					<Label text="Last Name" />
-					<Input value="{app>/user/lastName}" editable="{app>/editable}"/>
-					<Label text="Date of Birth" />
-					<DatePicker value="{app>/user/dateOfBirth}" editable="{app>/editable}"/>
+					<Label text="First Name" required="true"/>
+					<Input value="{app>/user/firstName}" editable="{app>/editable}" required="true"/>
+					<Label text="Last Name" required="true"/>
+					<Input value="{app>/user/lastName}" editable="{app>/editable}" required="true"/>
+					<Label text="Date of Birth" required="true"/>
+					<DatePicker value="{app>/user/dateOfBirth}" editable="{app>/editable}" required="true"/>
 					<Label text="Email" />
 					<Input value="{app>/user/email}" editable="{app>/editable}"/>
 					<Label text="Residence" />
@@ -51,7 +51,7 @@
 						<content>
 							<Title text="{app>/user/firstName} {app>/user/lastName}" />
 							<ToolbarSpacer />
-							<ToolbarSeparator />
+							<ToolbarSeparator visible="{= ${app>/editMode}}"/>
 							<Button
 								text="Edit"
 								type="Accept"
