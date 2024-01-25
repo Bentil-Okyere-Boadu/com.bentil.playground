@@ -7,59 +7,78 @@
 	xmlns:f="sap.ui.layout.form"
 	core:require="{
 		formatter: 'com/bentil/playground/model/formatter'
-	}">
-    <Page>
-        <f:SimpleForm
-			adjustLabelSpan="true"
-			backgroundDesign="Translucent"
-			breakpointL="1024"
-			breakpointM="600"
-			breakpointXL="1440"
-			columnsL="2"
-			columnsM="2"
-			columnsXL="2"
-			editable="true"
-			emptySpanL="0"
-			emptySpanM="0"
-			emptySpanS="0"
-			emptySpanXL="-1"
-			labelMinWidth="192"
-			labelSpanL="4"
-			labelSpanM="2"
-			labelSpanS="12"
-			labelSpanXL="-1"
-			layout="ResponsiveLayout"
-			maxContainerCols="2"
-			minWidth="-1"
-			singleContainerFullSize="true"
-			width=""
-		>
-			<f:content>
-				<Label text="First Name"/>
-                <Input value="{app>/user/firstName}"/>
-				<Label text="Last Name"/>
-                <Input value="{app>/user/lastName}"/>
-				<Label text="Date of Birth"/>
-                <DatePicker value="{app>/user/dateOfBirth}"/>
-				<Label text="Email"/>
-                <Input value="{app>/user/email}"/>
-				<Label text="Residence"/>
-                <Input value="{app>/user/residence}"/>
-				<Label text="Hometown"/>
-                <Input value="{app>/user/hometown}"/>
-                <Label text="Phone Number"/>
-                <Input value="{app>/user/phoneNumber}"/>
-                <Label text="Whatsapp Number"/>
-                <Input value="{app>/user/whatsappNumber}"/>
-                <Label text="Occupation"/>
-                <Input value="{app>/user/occupation}"/>
-                <Label text="Organisation"/>
-                <Input value="{app>/user/organisation}"/>
-			</f:content>
-			<f:title>
-			</f:title>
-			<f:toolbar>
-			</f:toolbar>
-		</f:SimpleForm>
-    </Page>
-    </mvc:View>
+	}"
+>
+	<Page floatingFooter="true" showNavButton="true">
+		<content>
+			<f:SimpleForm
+				columnsM="2"
+				columnsXL="2"
+				editable="{app>/editable}"
+				layout="ColumnLayout"
+			>
+				<f:content>
+					<Label text="First Name" />
+					<Input value="{app>/user/firstName}" editable="{app>/editable}"/>
+					<Label text="Last Name" />
+					<Input value="{app>/user/lastName}" editable="{app>/editable}"/>
+					<Label text="Date of Birth" />
+					<DatePicker value="{app>/user/dateOfBirth}" editable="{app>/editable}"/>
+					<Label text="Email" />
+					<Input value="{app>/user/email}" editable="{app>/editable}"/>
+					<Label text="Residence" />
+					<Input value="{app>/user/residence}" editable="{app>/editable}"/>
+					<Label text="Hometown" />
+					<Input value="{app>/user/hometown}" editable="{app>/editable}"/>
+					<Label text="Phone Number" />
+					<Input value="{app>/user/phoneNumber}" editable="{app>/editable}"/>
+					<Label text="Whatsapp Number" />
+					<Input value="{app>/user/whatsappNumber}" editable="{app>/editable}"/>
+					<Label text="Occupation" />
+					<Input value="{app>/user/occupation}" editable="{app>/editable}"/>
+					<Label text="Organization" />
+					<Input value="{app>/user/organization}" editable="{app>/editable}"/>
+				</f:content>
+				<f:title>
+					<core:Title
+						emphasized="true"
+						icon="sap-icon://employee"
+						text="{app>/user/firstName} {app>/user/lastName}"
+					/>
+				</f:title>
+				<f:toolbar>
+					<Toolbar>
+						<content>
+							<Title text="{app>/user/firstName} {app>/user/lastName}" />
+							<ToolbarSpacer />
+							<ToolbarSeparator />
+							<Button
+								text="Edit"
+								type="Accept"
+								icon="sap-icon://edit"
+								press=".onEditUserPress"
+								visible="{= ${app>/editMode}}"
+							/>
+						</content>
+					</Toolbar>
+				</f:toolbar>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button
+						text="Delete"
+						type="Reject"
+						press=".onDeleteBtnPress"
+					/>
+					<Button
+						text="Save"
+						type="Emphasized"
+						press=".onSaveUserClick"
+					/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

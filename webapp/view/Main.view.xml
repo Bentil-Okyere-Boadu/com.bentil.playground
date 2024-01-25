@@ -6,44 +6,53 @@
 	xmlns:core="sap.ui.core"
 	core:require="{
 		formatter: 'com/bentil/playground/model/formatter'
-	}">
-
-	<Page
-		title="{i18n>appTitle}"
-		>
+	}"
+>
+	<Page title="{i18n>appTitle}">
 		<content>
-	 <Table items="{app>/users}" class=''>
-		 <columns>
-			 <Column>
-			 	<Text text="Name"/>
-			 </Column>
-			 <Column>
-			 	<Text text="Email"/>
-			 </Column>
-			 <Column>
-			 	<Text text="Phone Number"/>
-			 </Column>
-			 <Column>
-			 	<Text text="Residence"/>
-			 </Column>
-			 <Column>
-			 	<Text text="Occupation"/>
-			 </Column>
-			 <Column>
-			 </Column>
-		 </columns>
-		 <ColumnListItem type="Navigation" press=".onColumnListItemPress">
-			 <cells>
-				 <Text text="{app>firstName} {app>lastName}"/>
-				 <Text text="{app>email}"/>
-				 <Text text="{app>phoneNumber}"/>
-				 <Text text="{app>residence}"/>
-				 <Text text="{app>occupation}"/>
-			 	<Button text='Delete' press='onDeleteBtnPress' icon='sap-icon://delete'/>
-			 </cells>
-		 </ColumnListItem>
-	 </Table>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button
+						text="Add member"
+						type="Emphasized"
+						press=".onCreateMemberPress"
+					>
+						
+					</Button>
+				</content>
+			</Toolbar>
+			<Table items="{app>/users}">
+				<columns>
+					<Column>
+						<Text text="Name" />
+					</Column>
+					<Column>
+						<Text text="Email" />
+					</Column>
+					<Column>
+						<Text text="Phone Number" />
+					</Column>
+					<Column>
+						<Text text="Residence" />
+					</Column>
+					<Column>
+						<Text text="Occupation" />
+					</Column>
+				</columns>
+				<ColumnListItem
+					type="Navigation"
+					press=".onColumnListItemPress"
+				>
+					<cells>
+						<Text text="{app>firstName} {app>lastName}" />
+						<Text text="{app>email}" />
+						<Text text="{app>phoneNumber}" />
+						<Text text="{app>residence}" />
+						<Text text="{app>occupation}" />
+					</cells>
+				</ColumnListItem>
+			</Table>
 		</content>
 	</Page>
-
 </mvc:View>

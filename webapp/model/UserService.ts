@@ -47,5 +47,23 @@ export const UserService = ()  => {
                 MessageBox.error(error as string)
             }
         },
+        saveUser: async (oUser: User) : Promise<User|number> => {
+            const response: Response = await fetchAPI('user', FetchMethods.POST, oUser);
+            if(response.ok) {
+                const user = (await response.json()) as User;
+                return user;
+            } else {
+                return response.status
+            }
+        },
+        editUser: async (sId : string ,oUser: User) : Promise<User|number> => {
+            const response: Response = await fetchAPI(`user/${sId}`, FetchMethods.PUT, oUser);
+            if(response.ok) {
+                const user = (await response.json()) as User;
+                return user;
+            } else {
+                return response.status
+            }
+        }
     }
 }

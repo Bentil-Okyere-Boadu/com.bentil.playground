@@ -4,7 +4,6 @@ import { UserService } from "../model/UserService";
 import { User } from "../types";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import { ListItemBase$PressEvent } from "sap/m/ListItemBase";
-import { Button$PressEvent } from "sap/m/Button";
 
 /**
  * @namespace com.bentil.playground.controller
@@ -17,6 +16,7 @@ export default class Main extends BaseController {
 	
 	public async onRouteMatched() {
 		const oAppModel = (this.getModel('app')) as JSONModel;
+		oAppModel.setProperty('/editable', false);
 		const sToken = oAppModel.getProperty('/token');
 		if(sToken) {
 			const aUsers: User[] = await this.getUsers();
@@ -34,17 +34,10 @@ export default class Main extends BaseController {
 		this.navTo('details', { id: id });
 	}
 
-	public onDeleteBtnPress = (oEvent: Button$PressEvent) => {
-		const id = (oEvent.getSource().getBindingContext('app').getProperty('_id')) as string;
-		MessageBox.confirm('Are you sure you want to delete user?', {
-			actions: ["YES", "NO"],
-			emphasizedAction: "YES",
-			onClose: async (sAction: string) => {
-				if(sAction === "YES"){
-					await UserService().deleteUser(id);
-					this.getModel('app').refresh(true);
-				}
-			}
-		})
-	}
+	private onCreateMemberPress = () => {
+		const oAppModel = (this.getModel('app')) as JSONModel;
+		oAppModel.setProperty('/editMode', false);
+		oAppModel.setProperty('/editable', true);
+		this.navTo('details')
+	} 
 }

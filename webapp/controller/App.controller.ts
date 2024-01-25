@@ -17,6 +17,8 @@ export default class App extends BaseController {
 		const token = this.Config.getAccessToken()
 		this.setModel(new JSONModel({
 			token: token,
+			editable: false,
+			editMode: true,
 			login: {email: '', password: ''}
 		}), 'app');
 
